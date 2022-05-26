@@ -13,6 +13,10 @@ module.exports = {
         // JavaScript 动态创建 <style> 标签，插入到html文件的 <head> 标签中
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
     ],
   },
 };
