@@ -25,26 +25,26 @@ module.exports = {
             loader: "babel-loader",
             options: {
               // 开启babel的缓存
-              // cacheDirectory: true,
+              cacheDirectory: true,
               presets: [
                 [
                   "@babel/preset-env",
-                  // {
-                  //   // useBuiltIns: usage 会根据配置的浏览器兼容，实现了按需添加
-                  //   useBuiltIns: "usage",
-                  //   corejs: 3,
-                  //   // 不以commonjs打包，方便tree-shaking
-                  //   modules: false,
-                  // },
+                  {
+                    //   // useBuiltIns: usage 会根据配置的浏览器兼容，实现了按需添加
+                    useBuiltIns: "usage",
+                    corejs: 3,
+                    //   // 不以commonjs打包，方便tree-shaking
+                    //   modules: false,
+                  },
                 ],
-                // "@babel/preset-react",
-                // "@babel/preset-typescript",
+                "@babel/preset-react",
+                "@babel/preset-typescript",
               ],
-              // plugins: [
-              //   ["@babel/plugin-proposal-decorators", { legacy: true }],
-              //   ["@babel/plugin-proposal-class-properties"],
-              //   // ["@babel/plugin-syntax-dynamic-import"],
-              // ],
+              plugins: [
+                ["@babel/plugin-proposal-decorators", { legacy: true }],
+                ["@babel/plugin-proposal-class-properties", { loose: true }],
+                //   // ["@babel/plugin-syntax-dynamic-import"],
+              ],
             },
           },
         ],

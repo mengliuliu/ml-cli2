@@ -23,7 +23,10 @@
   "homepage": "https://github.com/mengliuliu/webpack-test#readme",
   "devDependencies": {
     "@babel/core": "^7.18.5",
+    "@babel/plugin-proposal-decorators": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
     "babel-loader": "^8.2.5",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
@@ -37,6 +40,7 @@
     "webpack-dev-server": "^4.9.2"
   },
   "dependencies": {
+    "core-js": "^3.23.2",
     "lodash": "^4.17.21"
   }
 }
