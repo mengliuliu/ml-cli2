@@ -8,7 +8,7 @@ const distPath = `${process.cwd()}/dist`;
 const publicPath = `${process.cwd()}/public`;
 
 module.exports = {
-  entry: path.resolve(srcPath, "index.js"),
+  entry: path.resolve(srcPath, "index.ts"),
   output: {
     path: distPath,
     filename: "js/[name].[contenthash:6].js",
