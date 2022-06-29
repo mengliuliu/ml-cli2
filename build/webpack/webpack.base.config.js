@@ -3,9 +3,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 //定义目录
-const srcPath = path.resolve(process.cwd(), '/src');
-const distPath = path.resolve(process.cwd(), '/dist');
-const publicPath = path.resolve(process.cwd(), '/public');
+const srcPath = path.resolve(process.cwd(), './src');
+const distPath = path.resolve(process.cwd(), './dist');
+const publicPath = path.resolve(process.cwd(), './public');
 
 console.log('process.cwd()', process.cwd());
 module.exports = {
@@ -14,6 +14,9 @@ module.exports = {
         path: distPath,
         filename: 'js/[name].[contenthash:6].js',
         clean: true,
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js', '.json'],
     },
     module: {
         rules: [
