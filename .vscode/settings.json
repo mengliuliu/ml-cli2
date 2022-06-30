@@ -30,5 +30,5 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.formatOnSave": true, // 设置保存时格式化
-    "editor.defaultFormatter": "esbenp.prettier-vscode" // 设置默认的格式化工具
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
