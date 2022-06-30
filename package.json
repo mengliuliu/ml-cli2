@@ -1,48 +1,60 @@
 {
-  "name": "webpack-test",
-  "version": "1.0.0",
-  "description": "测试webpack的loader、plugin等",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env NODE_ENV=development node build/scripts/start.js",
-    "build": "cross-env NODE_ENV=production node build/scripts/build.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mengliuliu/webpack-test.git"
-  },
-  "keywords": [
-    "测试loader、plugin等"
-  ],
-  "author": "mengliu",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mengliuliu/webpack-test/issues"
-  },
-  "homepage": "https://github.com/mengliuliu/webpack-test#readme",
-  "devDependencies": {
-    "@babel/core": "^7.18.5",
-    "@babel/plugin-proposal-decorators": "^7.18.2",
-    "@babel/preset-env": "^7.18.2",
-    "@babel/preset-react": "^7.17.12",
-    "@babel/preset-typescript": "^7.17.12",
-    "babel-loader": "^8.2.5",
-    "cross-env": "^7.0.3",
-    "css-loader": "^6.7.1",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.5.0",
-    "less": "^4.1.2",
-    "less-loader": "^11.0.0",
-    "mini-css-extract-plugin": "^2.6.0",
-    "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.9.2"
-  },
-  "dependencies": {
-    "core-js": "^3.23.2",
-    "lodash": "^4.17.21",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+    "name": "webpack-test",
+    "version": "1.0.0",
+    "description": "测试webpack的loader、plugin等",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "cross-env NODE_ENV=development node build/scripts/start.js",
+        "build": "cross-env NODE_ENV=production node build/scripts/build.js"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "src/**/*": [
+            "prettier --write"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mengliuliu/webpack-test.git"
+    },
+    "keywords": [
+        "测试loader、plugin等"
+    ],
+    "author": "mengliu",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mengliuliu/webpack-test/issues"
+    },
+    "homepage": "https://github.com/mengliuliu/webpack-test#readme",
+    "devDependencies": {
+        "@babel/core": "^7.18.5",
+        "@babel/plugin-proposal-decorators": "^7.18.2",
+        "@babel/preset-env": "^7.18.2",
+        "@babel/preset-react": "^7.17.12",
+        "@babel/preset-typescript": "^7.17.12",
+        "babel-loader": "^8.2.5",
+        "cross-env": "^7.0.3",
+        "css-loader": "^6.7.1",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^5.5.0",
+        "husky": "^8.0.1",
+        "less": "^4.1.2",
+        "less-loader": "^11.0.0",
+        "lint-staged": "^13.0.3",
+        "mini-css-extract-plugin": "^2.6.0",
+        "webpack": "^5.72.1",
+        "webpack-cli": "^4.9.2",
+        "webpack-dev-server": "^4.9.2"
+    },
+    "dependencies": {
+        "core-js": "^3.23.2",
+        "lodash": "^4.17.21",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    }
 }
