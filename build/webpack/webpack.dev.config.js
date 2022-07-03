@@ -1,17 +1,20 @@
-const { merge } = require("webpack-merge");
-const BaseConfig = require("./webpack.base.config");
-
-//定义目录
-const publicPath = `${process.cwd()}/public`;
+const { merge } = require('webpack-merge')
+const BaseConfig = require('./webpack.base.config')
+const { pathConfig, serverConfig } = require('./config')
+const { PROJECT_PUBLICPATH } = pathConfig
+const { SERVER_HOST, SERVER_PORT } = serverConfig
 
 module.exports = merge(BaseConfig, {
-  mode: "development",
-  devServer: {
-    static: {
-      directory: publicPath, // 服务的根目录，用于静态文件
+    mode: 'development',
+    devtool: 'eval-source-map',
+    devServer: {
+        static: {
+            directory: PROJECT_PUBLICPATH, // 服务的根目录，用于静态文件
+        },
+        hot: true,
+        host: SERVER_HOST,
+        port: SERVER_PORT,
+        // stats: 'errors-only', // 终端仅打印 error
+        compress: true, // 是否启用 gzip 压缩
     },
-    hot: true,
-    host: "0.0.0.0",
-    port: 8009,
-  },
-});
+})

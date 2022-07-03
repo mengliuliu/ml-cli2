@@ -14,7 +14,7 @@ const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
 root.render(
     <div>
-        hello world
+        hello world!
         <App name="meng" age={24}></App>
     </div>,
 )

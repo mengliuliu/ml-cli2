@@ -1,28 +1,25 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path = require('path');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { pathConfig } = require('./config')
+const { PROJECT_SRCPATH, PROJECT_DISTPATH, PROJECT_PUBLICPATH } = pathConfig
+const isDev = process.env.NODE_ENV === 'development'
 
-//定义目录
-const srcPath = path.resolve(process.cwd(), './src');
-const distPath = path.resolve(process.cwd(), './dist');
-const publicPath = path.resolve(process.cwd(), './public');
-
-console.log('process.cwd()', process.cwd());
 module.exports = {
-    entry: path.resolve(srcPath, 'index.tsx'),
+    entry: path.resolve(PROJECT_SRCPATH, 'index.tsx'),
     output: {
-        path: distPath,
-        filename: 'js/[name].[contenthash:6].js',
+        path: PROJECT_DISTPATH,
+        filename: `js/[name]${isDev ? '' : '.[contenthash:6]'}.js`,
         clean: true,
     },
     resolve: {
-      extensions: ['.tsx', '.ts', '.js', '.json'],
+        extensions: ['.tsx', '.ts', '.js', '.json'],
     },
     module: {
         rules: [
             {
                 test: /\.(tsx?|jsx?)$/,
-                include: srcPath,
+                include: PROJECT_SRCPATH,
                 use: [
                     {
                         loader: 'babel-loader',
@@ -44,14 +41,8 @@ module.exports = {
                                 '@babel/preset-typescript',
                             ],
                             plugins: [
-                                [
-                                    '@babel/plugin-proposal-decorators',
-                                    { legacy: true },
-                                ],
-                                [
-                                    '@babel/plugin-proposal-class-properties',
-                                    { loose: true },
-                                ],
+                                ['@babel/plugin-proposal-decorators', { legacy: true }],
+                                ['@babel/plugin-proposal-class-properties', { loose: true }],
                                 //   // ["@babel/plugin-syntax-dynamic-import"],
                             ],
                         },
@@ -100,7 +91,25 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'test html-webpack-plugin',
-            template: path.join(publicPath, './index.html'),
+            filename: 'index.html',
+            template: path.join(PROJECT_PUBLICPATH, './index.html'),
+            // cache: fale, // 特别重要：防止之后使用v6版本 copy-webpack-plugin 时代码修改一刷新页面为空问题。
+            // minify: isDev
+            //     ? false
+            //     : {
+            //           removeAttributeQuotes: true,
+            //           collapseWhitespace: true,
+            //           removeComments: true,
+            //           collapseBooleanAttributes: true,
+            //           collapseInlineTagWhitespace: true,
+            //           removeRedundantAttributes: true,
+            //           removeScriptTypeAttributes: true,
+            //           removeStyleLinkTypeAttributes: true,
+            //           minifyCSS: true,
+            //           minifyJS: true,
+            //           minifyURLs: true,
+            //           useShortDoctype: true,
+            //       },
         }),
         new MiniCssExtractPlugin({
             ignoreOrder: true,
@@ -108,4 +117,4 @@ module.exports = {
             chunkFilename: 'css/[name].[contenthash:6].css',
         }),
     ],
-};
+}
