@@ -1,9 +1,9 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { pathConfig } = require('./config')
+const { envConfig, pathConfig, getCssLoaders } = require('./config')
 const { PROJECT_SRCPATH, PROJECT_DISTPATH, PROJECT_PUBLICPATH } = pathConfig
-const isDev = process.env.NODE_ENV === 'development'
+const { isDev } = envConfig
 
 module.exports = {
     entry: path.resolve(PROJECT_SRCPATH, 'index.tsx'),
@@ -51,28 +51,11 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                    },
-                    {
-                        loader: 'css-loader',
-                    },
-                ],
+                use: getCssLoaders(3),
             },
             {
                 test: /\.less$/i,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                    },
-                    {
-                        loader: 'css-loader',
-                    },
-                    {
-                        loader: 'less-loader',
-                    },
-                ],
+                use: getCssLoaders(4),
             },
             {
                 test: /\.(png|jpg|gif|jpeg|svg|mov|mp4|webp)$/,

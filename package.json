@@ -41,6 +41,7 @@
         "@babel/preset-typescript": "^7.17.12",
         "@commitlint/cli": "^17.0.3",
         "@commitlint/config-conventional": "^17.0.3",
+        "autoprefixer": "^10.4.7",
         "babel-loader": "^8.2.5",
         "conventional-changelog-cli": "^2.2.2",
         "cross-env": "^7.0.3",
@@ -52,6 +53,10 @@
         "less-loader": "^11.0.0",
         "lint-staged": "^13.0.3",
         "mini-css-extract-plugin": "^2.6.0",
+        "postcss-flexbugs-fixes": "^5.0.2",
+        "postcss-loader": "^7.0.0",
+        "postcss-normalize": "^10.0.1",
+        "postcss-preset-env": "^7.7.2",
         "prettier": "^2.7.1",
         "webpack": "^5.72.1",
         "webpack-cli": "^4.9.2",
@@ -62,5 +67,11 @@
         "lodash": "^4.17.21",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
-    }
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "ie >= 9",
+        "not op_mini all"
+    ]
 }

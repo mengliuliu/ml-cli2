@@ -1,4 +1,11 @@
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const isDev = process.env.NODE_ENV === 'development'
+// 环境变量配置
+const envConfig = {
+    isDev,
+}
 
 //定义目录
 const PROJECT_SRCPATH = path.resolve(process.cwd(), './src')
@@ -15,4 +22,29 @@ const serverConfig = {
     SERVER_PORT: 8009,
 }
 
-module.exports = { pathConfig, serverConfig }
+const getCssLoaders = (n) =>
+    [
+        {
+            loader: MiniCssExtractPlugin.loader,
+        },
+        {
+            loader: 'css-loader',
+            options: {
+                sourceMap: isDev,
+            },
+        },
+        {
+            loader: 'postcss-loader',
+            options: {
+                sourceMap: isDev,
+            },
+        },
+        {
+            loader: 'less-loader',
+            options: {
+                sourceMap: isDev,
+            },
+        },
+    ].slice(0, n)
+
+module.exports = { envConfig, pathConfig, serverConfig, getCssLoaders }
