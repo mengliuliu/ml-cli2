@@ -1,5 +1,6 @@
-.hello {
-  color: red;
-  background-image: url('./icon.png');
-  /* background-image: url(${require('')}); */
+.img {
+    width: 300px;
+    height: 300px;
+    color: red;
+    background-image: url('./icon.png');
 }

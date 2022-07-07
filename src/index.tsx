@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-// import 'common.less';
 import './index.css'
+import './common.less'
 
 import App from './app'
 type name = 'meng' | 'liu'
@@ -14,7 +14,8 @@ const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
 root.render(
     <div>
-        hello world!
+        <div className="img"> hello world!</div>
+
         <App name="meng" age={24}></App>
     </div>,
 )
