@@ -8,10 +8,12 @@ const envConfig = {
 }
 
 //定义目录
+const PROJECT_ROOT = path.resolve(process.cwd())
 const PROJECT_SRCPATH = path.resolve(process.cwd(), './src')
 const PROJECT_DISTPATH = path.resolve(process.cwd(), './dist')
 const PROJECT_PUBLICPATH = path.resolve(process.cwd(), './public')
 const pathConfig = {
+    PROJECT_ROOT,
     PROJECT_SRCPATH,
     PROJECT_DISTPATH,
     PROJECT_PUBLICPATH,

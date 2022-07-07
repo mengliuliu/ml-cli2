@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { envConfig, pathConfig, getCssLoaders } = require('./config')
-const { PROJECT_SRCPATH, PROJECT_DISTPATH, PROJECT_PUBLICPATH } = pathConfig
+const { PROJECT_ROOT, PROJECT_SRCPATH, PROJECT_DISTPATH, PROJECT_PUBLICPATH } = pathConfig
 const { isDev } = envConfig
 
 module.exports = {
@@ -15,9 +15,9 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.json'],
         alias: {
-            '@src': resolve(PROJECT_PATH, './src'),
-            '@components': resolve(PROJECT_PATH, './src/components'),
-            '@utils': resolve(PROJECT_PATH, './src/utils'),
+            '@src': path.resolve(PROJECT_ROOT, './src'),
+            '@components': path.resolve(PROJECT_ROOT, './src/components'),
+            '@utils': path.resolve(PROJECT_ROOT, './src/utils'),
         },
     },
     module: {
