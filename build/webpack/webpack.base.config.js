@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const { envConfig, pathConfig, getCssLoaders } = require('./config')
 const { PROJECT_ROOT, PROJECT_SRCPATH, PROJECT_DISTPATH, PROJECT_PUBLICPATH } = pathConfig
 const { isDev } = envConfig
@@ -104,5 +105,6 @@ module.exports = {
             filename: 'css/[name].[contenthash:6].css',
             chunkFilename: 'css/[name].[contenthash:6].css',
         }),
+        new ForkTsCheckerWebpackPlugin(),
     ],
 }

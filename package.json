@@ -51,6 +51,7 @@
         "cross-env": "^7.0.3",
         "css-loader": "^6.7.1",
         "file-loader": "^6.2.0",
+        "fork-ts-checker-webpack-plugin": "^7.2.12",
         "html-webpack-plugin": "^5.5.0",
         "husky": "^4.3.8",
         "less": "^4.1.2",
