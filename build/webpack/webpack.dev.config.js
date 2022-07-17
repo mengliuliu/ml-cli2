@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const BaseConfig = require('./webpack.base.config')
 const { pathConfig, serverConfig } = require('./config')
@@ -17,4 +18,5 @@ module.exports = merge(BaseConfig, {
         // stats: 'errors-only', // 终端仅打印 error
         compress: true, // 是否启用 gzip 压缩
     },
+    plugins: [new webpack.HotModuleReplacementPlugin()],
 })

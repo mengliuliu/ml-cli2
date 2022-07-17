@@ -102,8 +102,8 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             ignoreOrder: true,
-            filename: 'css/[name].[contenthash:6].css',
-            chunkFilename: 'css/[name].[contenthash:6].css',
+            filename: 'css/[name].css',
+            chunkFilename: 'css/[name].css',
         }),
         new ForkTsCheckerWebpackPlugin(),
     ],
