@@ -10,7 +10,7 @@ const n: any = 123
 console.log(n)
 console.log(name)
 
-const container = document.getElementById('root')
+const container: any = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
 root.render(
     <div>

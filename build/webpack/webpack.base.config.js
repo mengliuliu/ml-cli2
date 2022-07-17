@@ -107,4 +107,10 @@ module.exports = {
         }),
         new ForkTsCheckerWebpackPlugin(),
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            name: false,
+        },
+    },
 }
