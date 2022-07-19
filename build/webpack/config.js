@@ -24,6 +24,16 @@ const serverConfig = {
     SERVER_PORT: 8009,
 }
 
+const proxyConfig = {
+    '/api/': {
+        target: 'http://mengliublog.com:3000',
+        changeOrigin: true,
+        pathRewrite: {
+            '/api': '',
+        },
+    },
+}
+
 const getCssLoaders = (n) =>
     [
         {
@@ -49,4 +59,4 @@ const getCssLoaders = (n) =>
         },
     ].slice(0, n)
 
-module.exports = { envConfig, pathConfig, serverConfig, getCssLoaders }
+module.exports = { envConfig, pathConfig, serverConfig, proxyConfig, getCssLoaders }

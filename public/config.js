@@ -1,3 +1,3 @@
 var config = {
-  name: "mengliu",
-};
+    serverAddress: 'https://mengliublog.com:3000',
+}

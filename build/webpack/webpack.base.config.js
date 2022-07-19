@@ -10,7 +10,8 @@ module.exports = {
     entry: path.resolve(PROJECT_SRCPATH, 'index.tsx'),
     output: {
         path: PROJECT_DISTPATH,
-        filename: `js/[name]${isDev ? '' : '.[contenthash:6]'}.js`,
+        // filename: `js/[name]${isDev ? '' : '.[contenthash:6]'}.js`,
+        filename: `js/[name].[contenthash:6].js`,
         clean: true,
     },
     resolve: {
@@ -102,8 +103,8 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             ignoreOrder: true,
-            filename: 'css/[name].css',
-            chunkFilename: 'css/[name].css',
+            filename: 'css/[name].[contenthash:6].css',
+            chunkFilename: 'css/[name].[contenthash:6].css',
         }),
         new ForkTsCheckerWebpackPlugin(),
     ],

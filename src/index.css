@@ -1,6 +1,6 @@
 .img {
     width: 300px;
     height: 300px;
-    color: red;
+    color: blue;
     background-image: url('./icon.png');
 }

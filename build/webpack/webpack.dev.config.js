@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const BaseConfig = require('./webpack.base.config')
-const { pathConfig, serverConfig } = require('./config')
+const { pathConfig, serverConfig, proxyConfig } = require('./config')
 const { PROJECT_PUBLICPATH } = pathConfig
 const { SERVER_HOST, SERVER_PORT } = serverConfig
 
@@ -17,6 +17,7 @@ module.exports = merge(BaseConfig, {
         port: SERVER_PORT,
         // stats: 'errors-only', // 终端仅打印 error
         compress: true, // 是否启用 gzip 压缩
+        proxy: proxyConfig,
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
 })
