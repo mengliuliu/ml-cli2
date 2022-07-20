@@ -2,6 +2,7 @@ const path = require('path')
 const { merge } = require('webpack-merge')
 const CopyPlugin = require('copy-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
 const BaseConfig = require('./webpack.base.config')
 
 module.exports = merge(BaseConfig, {
@@ -26,7 +27,8 @@ module.exports = merge(BaseConfig, {
                     compress: { pure_funcs: ['console.log'] },
                 },
             }),
-        ].filter(Boolean),
+            new CssMinimizerWebpackPlugin(),
+        ],
         splitChunks: {
             chunks: 'all',
             name: false,
