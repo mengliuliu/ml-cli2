@@ -75,7 +75,7 @@ const getBabelOptions = () => {
                     useBuiltIns: 'usage',
                     corejs: 3,
                     //   // 不以commonjs打包，方便tree-shaking
-                    //   modules: false,
+                    modules: false,
                 },
             ],
             '@babel/preset-react',
