@@ -81,15 +81,9 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             ignoreOrder: true,
-            filename: isDev ? '[name].css' : '[name].[contenthash:6].css',
-            chunkFilename: isDev ? '[id].css' : '[id].[contenthash:6].css',
+            filename: isDev ? 'css/[name].css' : 'css/[name].[contenthash:6].css',
+            chunkFilename: isDev ? 'css/[id].css' : 'css/[id].[contenthash:6].css',
         }),
         new ForkTsCheckerWebpackPlugin(),
     ],
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-            name: false,
-        },
-    },
 }

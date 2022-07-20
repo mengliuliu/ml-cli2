@@ -1,6 +1,7 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
 const CopyPlugin = require('copy-webpack-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
 const BaseConfig = require('./webpack.base.config')
 
 module.exports = merge(BaseConfig, {
@@ -16,4 +17,19 @@ module.exports = merge(BaseConfig, {
             ],
         }),
     ],
+    optimization: {
+        minimize: true, // 启用代码压缩
+        minimizer: [
+            new TerserWebpackPlugin({
+                extractComments: false, // 去除所有注释
+                terserOptions: {
+                    compress: { pure_funcs: ['console.log'] },
+                },
+            }),
+        ].filter(Boolean),
+        splitChunks: {
+            chunks: 'all',
+            name: false,
+        },
+    },
 })
