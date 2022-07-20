@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const WebpackBar = require('webpackbar')
 const { envConfig, pathConfig, getCssLoaders, getBabelOptions } = require('./config')
 const { PROJECT_ROOT, PROJECT_SRCPATH, PROJECT_DISTPATH, PROJECT_PUBLICPATH } = pathConfig
 const { isDev } = envConfig
@@ -85,5 +86,9 @@ module.exports = {
             chunkFilename: isDev ? 'css/[id].css' : 'css/[id].[contenthash:6].css',
         }),
         new ForkTsCheckerWebpackPlugin(),
+        new WebpackBar({
+            name: isDev ? '正在启动' : '正在打包',
+            color: '#fa8c16',
+        }),
     ],
 }

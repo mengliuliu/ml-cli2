@@ -6,8 +6,6 @@ const devWebpackConfig = require('../webpack/webpack.dev.config')
 startApp()
 
 function startApp() {
-    console.log('__dirname', __dirname)
-
     // 启动编译
     const compiler = webpack(devWebpackConfig) // 构建 renderer 编译器实例
     const server = new WebpackDevServer(devWebpackConfig.devServer, compiler)
