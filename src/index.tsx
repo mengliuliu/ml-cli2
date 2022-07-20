@@ -11,10 +11,11 @@ console.log(n)
 console.log(name)
 console.log(name)
 
-if (module && module.hot) {
-    module.hot.accept('./app.tsx')
-    module.hot.accept('./index.css')
-}
+// if (module && module.hot) {
+//     module.hot.accept()
+//     // module.hot.accept('./app.tsx')
+//     // module.hot.accept('./index.css')
+// }
 
 const container: any = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript

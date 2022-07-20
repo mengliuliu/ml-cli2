@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const { envConfig, pathConfig, getCssLoaders } = require('./config')
+const { envConfig, pathConfig, getCssLoaders, getBabelOptions } = require('./config')
 const { PROJECT_ROOT, PROJECT_SRCPATH, PROJECT_DISTPATH, PROJECT_PUBLICPATH } = pathConfig
 const { isDev } = envConfig
 
@@ -30,29 +30,7 @@ module.exports = {
                 use: [
                     {
                         loader: 'babel-loader',
-                        options: {
-                            // 开启babel的缓存
-                            cacheDirectory: true,
-                            presets: [
-                                [
-                                    '@babel/preset-env',
-                                    {
-                                        //   // useBuiltIns: usage 会根据配置的浏览器兼容，实现了按需添加
-                                        useBuiltIns: 'usage',
-                                        corejs: 3,
-                                        //   // 不以commonjs打包，方便tree-shaking
-                                        //   modules: false,
-                                    },
-                                ],
-                                '@babel/preset-react',
-                                '@babel/preset-typescript',
-                            ],
-                            plugins: [
-                                ['@babel/plugin-proposal-decorators', { legacy: true }],
-                                ['@babel/plugin-proposal-class-properties', { loose: true }],
-                                //   // ["@babel/plugin-syntax-dynamic-import"],
-                            ],
-                        },
+                        options: getBabelOptions(),
                     },
                 ],
             },
@@ -103,8 +81,8 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             ignoreOrder: true,
-            filename: 'css/[name].[contenthash:6].css',
-            chunkFilename: 'css/[name].[contenthash:6].css',
+            filename: isDev ? '[name].css' : '[name].[contenthash:6].css',
+            chunkFilename: isDev ? '[id].css' : '[id].[contenthash:6].css',
         }),
         new ForkTsCheckerWebpackPlugin(),
     ],

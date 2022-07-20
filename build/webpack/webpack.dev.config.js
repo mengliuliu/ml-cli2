@@ -1,13 +1,15 @@
-const webpack = require('webpack')
 const { merge } = require('webpack-merge')
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const BaseConfig = require('./webpack.base.config')
-const { pathConfig, serverConfig, proxyConfig } = require('./config')
+const { pathConfig, serverConfig, proxyConfig, envConfig } = require('./config')
 const { PROJECT_PUBLICPATH } = pathConfig
 const { SERVER_HOST, SERVER_PORT } = serverConfig
+const { isDev } = envConfig
 
 module.exports = merge(BaseConfig, {
     mode: 'development',
     devtool: 'eval-source-map',
+    target: isDev === 'development' ? 'web' : 'browserslist',
     devServer: {
         static: {
             directory: PROJECT_PUBLICPATH, // 服务的根目录，用于静态文件
@@ -19,5 +21,6 @@ module.exports = merge(BaseConfig, {
         compress: true, // 是否启用 gzip 压缩
         proxy: proxyConfig,
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()],
+    // plugins: [new webpack.HotModuleReplacementPlugin()],
+    plugins: [new ReactRefreshPlugin()],
 })

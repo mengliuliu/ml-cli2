@@ -59,4 +59,30 @@ const getCssLoaders = (n) =>
         },
     ].slice(0, n)
 
-module.exports = { envConfig, pathConfig, serverConfig, proxyConfig, getCssLoaders }
+const getBabelOptions = () => {
+    const plugins = [
+        ['@babel/plugin-proposal-decorators', { legacy: true }],
+        ['@babel/plugin-proposal-class-properties', { loose: true }],
+    ]
+    if (isDev) plugins.push('react-refresh/babel')
+    return {
+        cacheDirectory: true,
+        presets: [
+            [
+                '@babel/preset-env',
+                {
+                    //   // useBuiltIns: usage 会根据配置的浏览器兼容，实现了按需添加
+                    useBuiltIns: 'usage',
+                    corejs: 3,
+                    //   // 不以commonjs打包，方便tree-shaking
+                    //   modules: false,
+                },
+            ],
+            '@babel/preset-react',
+            '@babel/preset-typescript',
+        ],
+        plugins,
+    }
+}
+
+module.exports = { envConfig, pathConfig, serverConfig, proxyConfig, getCssLoaders, getBabelOptions }
