@@ -26,34 +26,38 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(tsx?|jsx?)$/,
-                include: PROJECT_SRCPATH,
-                use: [
+                oneOf: [
                     {
-                        loader: 'babel-loader',
-                        options: getBabelOptions(),
+                        test: /\.(tsx?|jsx?)$/,
+                        include: PROJECT_SRCPATH,
+                        use: [
+                            {
+                                loader: 'babel-loader',
+                                options: getBabelOptions(),
+                            },
+                        ],
+                    },
+                    {
+                        test: /\.css$/i,
+                        use: getCssLoaders(3),
+                    },
+                    {
+                        test: /\.less$/i,
+                        use: getCssLoaders(4),
+                    },
+                    {
+                        test: /\.(png|jpg|gif|jpeg|svg|mov|mp4|webp)$/,
+                        type: 'asset',
+                        parser: {
+                            dataUrlCondition: {
+                                maxSize: 4 * 1024, // 4kb
+                            },
+                        },
+                        generator: {
+                            filename: 'images/[name].[contenthash:6][ext]',
+                        },
                     },
                 ],
-            },
-            {
-                test: /\.css$/i,
-                use: getCssLoaders(3),
-            },
-            {
-                test: /\.less$/i,
-                use: getCssLoaders(4),
-            },
-            {
-                test: /\.(png|jpg|gif|jpeg|svg|mov|mp4|webp)$/,
-                type: 'asset',
-                parser: {
-                    dataUrlCondition: {
-                        maxSize: 4 * 1024, // 4kb
-                    },
-                },
-                generator: {
-                    filename: 'images/[name].[contenthash:6][ext]',
-                },
             },
         ],
     },
