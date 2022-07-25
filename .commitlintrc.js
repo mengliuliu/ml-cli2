@@ -1,4 +1,5 @@
 module.exports = {
+    //     "commit-msg": "commitlint --config .commitlintrc.js -E HUSKY_GIT_PARAMS"
     extends: ['@commitlint/config-conventional'],
     rules: {
         'type-enum': [
