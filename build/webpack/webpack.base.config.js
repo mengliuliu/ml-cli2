@@ -1,3 +1,4 @@
+const os = require('os')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -6,6 +7,7 @@ const WebpackBar = require('webpackbar')
 const { envConfig, pathConfig, getCssLoaders, getBabelOptions } = require('./config')
 const { PROJECT_ROOT, PROJECT_SRCPATH, PROJECT_DISTPATH, PROJECT_PUBLICPATH } = pathConfig
 const { isDev } = envConfig
+const threads = os.cpus().length - 1
 
 module.exports = {
     entry: path.resolve(PROJECT_SRCPATH, 'index.tsx'),
@@ -31,6 +33,12 @@ module.exports = {
                         test: /\.(tsx?|jsx?)$/,
                         include: PROJECT_SRCPATH,
                         use: [
+                            {
+                                loader: 'thread-loader',
+                                options: {
+                                    workers: threads, // 开启多进程打包
+                                },
+                            },
                             {
                                 loader: 'babel-loader',
                                 options: getBabelOptions(),

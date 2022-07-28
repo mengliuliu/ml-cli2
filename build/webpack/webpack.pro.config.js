@@ -1,10 +1,11 @@
-const path = require('path')
+const os = require('os')
 const { merge } = require('webpack-merge')
 const CopyPlugin = require('copy-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const BaseConfig = require('./webpack.base.config')
+const threads = os.cpus().length - 1
 
 module.exports = merge(BaseConfig, {
     mode: 'production',
@@ -23,6 +24,7 @@ module.exports = merge(BaseConfig, {
         minimize: true, // 启用代码压缩
         minimizer: [
             new TerserWebpackPlugin({
+                parallel: threads, // 开启多进程压缩
                 extractComments: false, // 去除所有注释
                 terserOptions: {
                     compress: { pure_funcs: ['console.log'] },
