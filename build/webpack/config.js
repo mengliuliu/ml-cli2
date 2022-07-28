@@ -66,7 +66,8 @@ const getBabelOptions = () => {
     ]
     if (isDev) plugins.push('react-refresh/babel')
     return {
-        cacheDirectory: true,
+        cacheDirectory: true, // 开启babel缓存
+        cacheCompression: false, // 关闭缓存文件压缩
         presets: [
             [
                 '@babel/preset-env',
