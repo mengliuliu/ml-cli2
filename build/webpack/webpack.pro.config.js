@@ -9,7 +9,6 @@ const threads = os.cpus().length - 1
 
 module.exports = merge(BaseConfig, {
     mode: 'production',
-    // devtool: 'none',
     plugins: [
         new CopyPlugin({
             patterns: [

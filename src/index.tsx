@@ -4,12 +4,6 @@ import './index.css'
 import './common.less'
 
 import App from './app'
-type name = 'meng' | 'liu'
-const name: name = 'meng'
-const n: any = 123
-console.log(n)
-console.log(name)
-console.log(name)
 
 // if (module && module.hot) {
 //     module.hot.accept()
