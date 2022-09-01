@@ -16,6 +16,10 @@ module.exports = merge(BaseConfig, {
                     from: 'public/config.js',
                     to: 'config.js',
                 },
+                {
+                    from: 'public/favicon.ico',
+                    to: 'favicon.ico',
+                },
             ],
         }),
     ],
@@ -36,9 +40,11 @@ module.exports = merge(BaseConfig, {
             //     analyzerPort: 8888, // 端口号设置
             // }),
         ],
-        splitChunks: {
-            chunks: 'all',
-            name: false,
-        },
+        // splitChunks: {
+        //     chunks: 'all',
+        //     // name: false,
+        //     // name: `[name].js`,
+        //     // name: `js/[name].[contenthash:6].chunk.js`,
+        // },
     },
 })

@@ -15,6 +15,7 @@ module.exports = {
         path: PROJECT_DISTPATH,
         // filename: `js/[name]${isDev ? '' : '.[contenthash:6]'}.js`,
         filename: `js/[name].[contenthash:6].js`,
+        chunkFilename: `js/[name].[contenthash:6].chunk.js`,
         clean: true,
     },
     resolve: {
