@@ -1,2 +1,2 @@
-# webpack-test
-测试webpack的loader、plugin等
+# react-cli-template
+react脚手架模版
