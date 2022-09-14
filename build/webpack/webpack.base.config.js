@@ -18,6 +18,7 @@ module.exports = {
         chunkFilename: `js/[name].[contenthash:6].chunk.js`,
         clean: true,
     },
+    stats: 'errors-only',
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.json'],
         alias: {
