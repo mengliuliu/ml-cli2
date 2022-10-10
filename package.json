@@ -1,7 +1,7 @@
 {
-    "name": "webpack-test",
+    "name": "{{name}}",
     "version": "1.0.0",
-    "description": "测试webpack的loader、plugin等",
+    "description": "{{description}}",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -26,7 +26,7 @@
     "keywords": [
         "测试loader、plugin等"
     ],
-    "author": "mengliu",
+    "author": "{{author}}",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/mengliuliu/webpack-test/issues"
@@ -81,6 +81,7 @@
         "axios": "^0.27.2",
         "core-js": "^3.23.2",
         "lodash": "^4.17.21",
+        "pubsub-js": "^1.9.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "styled-components": "^5.3.5"
